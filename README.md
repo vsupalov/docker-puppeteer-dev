@@ -1,6 +1,8 @@
 # Docker Puppeteer Dev
 A dockerized [Puppeteer](https://github.com/GoogleChrome/puppeteer) development environment, to work with the [Headless Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome) Node API locally.
 
+Read more [here](https://vsupalov.com/headless-chrome-puppeteer-docker/).
+
 ## Getting Started
 Make sure you have Docker and docker-compose installed and configured so your current user can use both.
 
@@ -40,14 +42,18 @@ your local editor, and see results you're producing. Changes to your code
 are available in the container right away. Upon a restart, you won't need
 to reinstall any dependencies.
 
-## Adding Stuff
+## Adding OS Packages
 
 If you need other tools or libraries, you'll need to adjust the
 Dockerfile and rebuild the image. It won't clutter your local system and
 you can be certain that you can work with puppeteer on different OS flavors
 without finding out how to install dependencies there.
 
-## Word of Caution
+## Adding Node Packages
+
+Use `yarn add package_name`, which will persist the package into both `package.json` and `yarn.lock` between container restarts. Check out [this part](https://yarnpkg.com/lang/en/docs/cli/add/) of the yarn docs for more details.
+
+## A Word of Caution
 
 This setup, is meant only for development. Puppeteer starts Headless Chrome
 in complete disregard of security concerns for once. Also, you'll be running
